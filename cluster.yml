@@ -1,0 +1,17 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: myfirstdeployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata: 
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: mysecondpod
+        image: docker.io/nisburgh/pageview 
