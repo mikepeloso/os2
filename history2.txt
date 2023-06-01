@@ -1,0 +1,1000 @@
+    2  sudo netstat -pna | grep 8080
+    3  ps -aux | grep 20171
+    4  man ps
+    5  ps -e | grep 20171
+    6  ps stop 20171
+    7  man ps
+    8  stop 20171
+    9  man kill
+   10  kill 20171
+   11  sudo kill 20171
+   12  go run main.go
+   13  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o k8s-for-beginners main.go
+   14  ls
+   15  podman build -t k8s-for-beginners:v0.0.1 .
+   16  podman images
+   17  podman ps
+   18  podman run -d -p 8080:80 nginx
+   19  curl localhost:8080
+   20  podman run -it 67b --net container:67b nicolaka/netshoot
+   21  podman search netshoot
+   22  podman pull docker.io/nicolaka/netshoot 
+   23  podman ps
+   24  podman run -it 67b --net container:67b nicolaka/netshoot
+   25  podman run -it 67b --net container:67b docker.io/nicolaka/netshoot
+   26  podman run -d docker.io/nicolaka/netshoot 
+   27  docker run -it --net container:67 nicolaka/netshoot
+   28  podman run -it --net container:67 nicolaka/netshoot
+   29  podman ps
+   30  podman run -it --net container:67 nicolaka/netshoot
+   31  podman ps
+   32  podman stop 24
+   33  podman ps
+   34  podman run -d -h nginx01 -p 8081:80 nginx
+   35  podman exec 7c hostname
+   36  podman exec -it 7c bash
+   37  podman ps
+   38  uid
+   39  uid_map
+   40  cat /proc/$$/uid_map
+   41  podman exec -it 67 bash
+   42  podman ps
+   43  cat /etc/passwd
+   44  clear
+   45  sudo dnf install -y man-pages
+   46  podman ps
+   47  podman inspect --format '{{.State.Pid}}' 67
+   48  podman inspect --format '{{.State.Pid}}' 7c
+   49  ps -ef | grep nginx
+   50  ls -l /proc/38575/ns
+   51  podman exec -it 67 sh
+   52  podman rm -f $(podman ps -aq)
+   53  podman ps
+   54  podman stop 67
+   55  podman ps
+   56  podman rm 67
+   57  podman run -d packtworkshops/the-kubernetes-workshop:k8s-forbeginners
+   58  ls
+   59  cd Kubernetes-Workshop/
+   60  ls
+   61  cd Chapter01
+   62  ls
+   63  cd Exercise1.01/
+   64  ls
+   65  podman run -d k8s-for-beginners 
+   66  podman search k8s-for-beginners
+   67  podman pull docker.io/rogitech/k8s-for-beginners
+   68  history
+   69  podman build -t k8s-for-beginners:v0.0.1 .
+   70  ls
+   71  podman run -d localhost/k8s-for-beginners:v0.0.1
+   72  podman ps
+   73  podman run -it --net container:0f nicolaka/netshoot
+   74  podman run --net host -d localhost/k8s-for-beginners:v0.0.1
+   75  podman ps
+   76  podman inspect --format '{{.State.Pid}}' 2a
+   77  ls -l /proc/2a/ns/net
+   78  ls -l /proc/55834/ns/net
+   79  ls -l /proc/1/ns/net
+   80  sudo ls -l /proc/1/ns/net
+   81  podman ps
+   82  podman rm 2a
+   83  podman rm -f 2a
+   84  podman ps
+   85  find /sys/fs/cgroup/memory/podman/* -type d
+   86  podman run -d localhost/k8s-for-beginners:v0.0.1
+   87  find /sys/fs/cgroup/memory/podman/* -type d
+   88  cd /sys
+   89  cd /fs
+   90  ls
+   91  cd fs
+   92  cd cgroup/
+   93  ls
+   94  cd machine.slice/
+   95  ls
+   96  cd
+   97  clear
+   98  podman inspect --format '{{.State.Pid}}' 0f
+   99  ls -l /proc/55569/ns/net
+  100  podman rm -f $(podman ps -aq)
+  101  podman ps
+  102  cat /proc/cpuinfo
+  103  lscpu | grep max
+  104  lscpu
+  105  free
+  106  free -h
+  107  top
+  108  clear
+  109  ls
+  110  cd Kubernetes-Workshop/
+  111  ls
+  112  cd Chapter01
+  113  ls
+  114  cd Activity1.01/
+  115  ls
+  116  cd pageview
+  117  ls
+  118  cat main.go 
+  119  cat Dockerfile 
+  120  history
+  121  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o pageview-app main.go
+  122  podman build -t pageview-app:v0.0.1 .
+  123  ls
+  124  cat Dockerfile 
+  125  cat main.go 
+  126  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main
+  127  podman build -t student/pageview-app:v0.0.1 .
+  128  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o pageview main.go
+  129  podman build -t student/pageview:v0.0.1 .
+  130  pwd
+  131  CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main main.go
+  132  podman build -t student/main:v0.0.1 .
+  133  podman run --name main -p 8080:8080 -d student/main:v0.0.1
+  134  curl localhost:8080
+  135  podman logout docker.io
+  136  podman pull dockr.io/student/main:v0.0.1
+  137  podman pull docker.io/student/main:v0.0.1
+  138  podman commit
+  139  podman commit main
+  140  podman push
+  141  podman push main
+  142  podman push ad
+  143  podman push --help
+  144  podman push ad mpeloso3rd/classwork:main
+  145  docker push mpeloso3rd/classwork:tagname
+  146  podman push mpeloso3rd/classwork:tagname
+  147  podman push ad mpeloso3rd/classwork:tagname
+  148  podman login --help
+  149  podman --username mpeloso3rd --password Mike@9400telescope
+  150  podman login --username mpeloso3rd --password Mike@9400telescope
+  151  podman push mpeloso3rd/classwork:tagname
+  152  podman push ad mpeloso3rd/classwork:main
+  153  podman push mpeloso3rd/classwork:main
+  154  podman ps
+  155  podman images
+  156  podman push localhost/student/main mpeloso3rd/classwork:main
+  157  podman push --help
+  158  podman images
+  159  podman push ad785ce3d308 mpeloso3rd/classwork:main
+  160  podman push 297f7638fc0b mpeloso3rd/classwork:main
+  161  podman ps
+  162  podman rm -f 44
+  163  podman push 297f7638fc0b mpeloso3rd/classwork:main
+  164  podman push --help
+  165  podman push mpeloso3rd/classwork:tagname
+  166  podman push 297f7638fc0b mpeloso3rd/classwork:tagname
+  167  podman login --username mpeloso3rd --password Mike@9400telescope
+  168  podman load
+  169  podman commit
+  170  podman tag --help
+  171  podman tag 297f7638fc0b mpeloso3rd/classwork:main
+  172  podman push 297f7638fc0b mpeloso3rd/classwork:main
+  173  sudo podman push 297f7638fc0b mpeloso3rd/classwork:main
+  174  podman push --remove-signatures  297f7638fc0b mpeloso3rd/classwork:main
+  175  podman push --creds(mpeloso3rd:Mike@9400telescope) 297f7638fc0b mpeloso3rd/classwork:main
+  176  podman push --creds (mpeloso3rd:Mike@9400telescope) 297f7638fc0b mpeloso3rd/classwork:main
+  177  podman push --creds mpeloso3rd:Mike@9400telescope 297f7638fc0b mpeloso3rd/classwork:main
+  178  podman pull mpeloso3rd/classwork:main
+  179  podman pull --creds mpeloso3rd:Mike@9400telescope mpeloso3rd/classwork:main
+  180  podman search main
+  181  podman search docker.io/mpeloso3rd
+  182  podman search docker.io/mpeloso3rd/classwork
+  183  podman pull docker.io/mpeloso3rd/classwork
+  184  podman pull docker.io/mpeloso3rd/classwork:main
+  185  podman images
+  186  ls
+  187  cd Kubernetes-Workshop/
+  188  ls
+  189  cd Chapter02
+  190  ls
+  191  cd Exercise02.02
+  192  ls
+  193  vi k8s-for-beginners-pod.yaml 
+  194  cd
+  195  sudo dnf install -y wget && https://downloads-openshift-console.apps.training.qeaq.p1.openshiftapps.com/amd64/linux/oc.tar
+  196  ls
+  197  wget https://downloads-openshift-console.apps.training.qeaq.p1.openshiftapps.com/amd64/linux/oc.tar
+  198  tar xf oc.tar
+  199  ls -l
+  200  ls -lh
+  201  ./oc login --token=sha256~HT3u12nZZ3Yf3_H1ivUgC3XkQH8RZ4ZBl4aozQRgohc --server=https://api.training.qeaq.p1.openshiftapps.com:6443
+  202  ./oc whoami
+  203  alias oc=~/oc
+  204  cd Kubernetes-Workshop/
+  205  ls
+  206  cd Chapter02
+  207  ls
+  208  cd Exercise02.02
+  209  ls
+  210  vi k8s-for-beginners-pod.yaml 
+  211  cp k8s-for-beginners-pod.yaml main.yml
+  212  vi main.yml 
+  213  oc apply -f main.yml 
+  214  vi main.yml 
+  215  oc apply -f main.yml 
+  216  oc apply -f k8s-for-beginners-pod.yaml 
+  217  oc whoami
+  218  oc status
+  219  oc login -u system:admin --config=/etc/origin/master/admin.kubeconfig
+  220  oc get pods
+  221  oc cluster-info
+  222  oc cluster-info dump
+  223  man kubectl
+  224  man oc
+  225  clear
+  226  oc create -f main.yml 
+  227  Error from server (Forbidden): error when creating "main.yml": pods is forbidden: User "mikepeloso" cannot create resource "pods" in API
+  228   group "" in the namespace "default"
+  229  clear
+  230  podman images
+  231  vi main.yml 
+  232  oc create -f main.yml 
+  233  oc apply -f main.yml 
+  234  oc --help
+  235  oc new-project --help
+  236  oc new-project myfirstpod
+  237  oc create -f main.yml 
+  238  oc get pod
+  239  oc get pod -o wide
+  240  curl 10.128.9.181
+  241  podman images
+  242  podman run -it docker.io/nicolaka/netshoot
+  243  oc get pod -o wide
+  244  history | less
+  245   podman run -it 67b --net container:67b nicolaka/netshoot
+  246  podman ps
+  247  cp main.yml netshoot.yml
+  248  vi netshoot.yml 
+  249  oc create -f netshoot.yml 
+  250  oc get pod
+  251  oc rsh netshoot
+  252  oc get pod
+  253  history
+  254  cd
+  255  history >> history.txt
+  256  vi history.txt
+  257  ip a
+  258  oc get pod -o wide
+  259  ./oc get pod -o wide
+  260  ls
+  261   systemctl enable --now cockpit.socket
+  262  git add .
+  263  ls -la
+  264  git status
+  265  git config --global user.name "[Michael Peloso]"
+  266  git init
+  267  git clone git@github.com:mikepeloso/os1.git
+  268  cp history.txt ~/os1/
+  269  cd Kubernetes-Workshop/
+  270  ls
+  271  cd Chapter02
+  272  ls
+  273  cd Exercise02.02
+  274  ls
+  275  cp main.yml ~/os1/
+  276  cp netshoot.yml ~/os1/
+  277  cd
+  278  cd os1
+  279  ls
+  280  git status
+  281  git add history.txt 
+  282  git add main.yml 
+  283  git add netshoot.yml 
+  284  git status
+  285  git commit -m "[classwork from Openshift 1]"
+  286  git push
+  287  history
+  288  cd
+  289  cd Kubernetes-Workshop/
+  290  cd Chapter02
+  291  cd Exercise02.02
+  292  ls
+  293  vi main.yml 
+  294  oc apply -f main.yml 
+  295  ./oc apply -f main.yml
+  296  ~/oc apply -f main.yml
+  297  ~/oc get pod
+  298  ~/oc create -f main.yml
+  299  alias oc=~/oc
+  300  oc --help
+  301  oc delete myfirstpod
+  302  oc get pod
+  303  oc delete --help
+  304  oc apply --help
+  305  oc apply --help | less
+  306  oc apply -f main.yml --overwrite=true
+  307  oc apply main.yml --overwrite=true
+  308  oc get pod
+  309  oc --help | less
+  310  oc delete main.yml 
+  311  oc delete myfirstpod
+  312  oc status
+  313  oc apply -f main.yml
+  314  oc get pod
+  315  oc get pod --show-labels
+  316  cd ..
+  317  cd Exercise02.03
+  318  ls
+  319  cp k8s-for-beginners-svc.yaml servicetest.yml
+  320  vi servicetest.yml 
+  321  ls
+  322  oc apply -f servicetest.yml 
+  323  oc get pod
+  324  oc get service
+  325  oc get service -o wide
+  326  oc get pod
+  327  oc rsh netshoot
+  328  oc get service
+  329  oc get pod
+  330  w
+  331  last
+  332  podman logs
+  333  podman ps -a
+  334  podman logs 94
+  335  podman logs 7c1ecbeb5180
+  336  podman buildx build --help
+  337  podman images
+  338   podman attach --help
+  339   
+  340  podman --help
+  341       --events-backend string       Events backend to use ("file"|"journald"|"none") (default "journald")
+  342        --help                        Help for podman
+  343        --hooks-dir strings           Set the OCI hooks directory path (may be set multiple times) (default [/usr/share/containers/oci/hoo
+  344  ks.d])
+  345        --identity string             path to SSH identity file, (CONTAINER_SSHKEY)
+  346        --log-level string            Log messages above specified level (trace, debug, info, warn, warning, error, fatal, panic) (default
+  347   "warn")
+  348        --namespace string            Set the libpod namespace, used to create separate views of the containers and pods on the system
+  349        --network-cmd-path string     Path to the command for configuring the network
+  350        --network-config-dir string   Path of the configuration directory for networks
+  351        --noout                       do not output to stdout
+  352    -r, --remote                      Access remote Podman service
+  353        --root string                 Path to the root directory in which data, including images, is stored (default "/home/student/.local
+  354  /share/containers/storage/libpod")
+  355        --runroot string              Path to the 'run directory' where all state information is stored
+  356        --runtime string              Path to the OCI-compatible binary used to run containers. (default "crun")
+  357        --runtime-flag stringArray    add global flags for the container runtime
+  358        --ssh string                  define the ssh mode (default "golang")
+  359        --storage-driver string       Select which storage driver is used to manage storage of images and containers
+  360        --storage-opt stringArray     Used to pass an option to the storage driver
+  361        --syslog                      Output logging information to syslog as well as the console (default false)
+  362        --tmpdir string               Path to the tmp directory for libpod state content.
+  363                                      
+  364                                      Note: use the environment variable 'TMPDIR' to change the temporary storage location for container i
+  365  mages, '/var/tmp'.
+  366                                       (default "/run/user/1000/libpod/tmp")
+  367        --transient-store             Enable transient container storage
+  368        --url string                  URL to access Podman service (CONTAINER_HOST) (default "unix:/run/user/1000/podman/podman.sock")
+  369    -v, --version                     version for podman
+  370        --volumepath string           Path to the volume directory in which volume data is stored (default "/home/student/.local/share/con
+  371  tainers/storage/volumes")
+  372  podman --help >> podman_help.txt
+  373  ls
+  374  mv podman_help.txt ~/os1
+  375  cd os1
+  376  ls
+  377  git add podman_help.txt 
+  378  git commit -m "Adding Podman help file"
+  379  git push
+  380  podman pod --help
+  381  podman pod clone --help
+  382  podman ps
+  383  podman ps -a
+  384  podman restart 94968041001b
+  385  podman ps
+  386  podman clone pod 94968041001b
+  387  podman pod clone 94968041001b
+  388  podman container --help
+  389  podman container clone --help
+  390  podman container clone 94968041001b
+  391  podman ps
+  392  podman ps -a
+  393  podman start 61a76db505ff
+  394  podman ps
+  395  podman ps -s
+  396  podman logs 61a76db505ff
+  397  podman logs 94968041001b
+  398  ls
+  399  cd
+  400  ld
+  401  ls
+  402  cd Kubernetes-Workshop/
+  403  ls
+  404  cd Chapter01
+  405  ls
+  406  cd Exercise1.01/
+  407  ls
+  408  cat Dockerfile 
+  409  podman login --help
+  410  podman push --help
+  411  podman pull mpeloso3rd/getting-started:latest
+  412  podman images
+  413  podman build -t docker.io/mpeloso3rd/getting-started
+  414  podman run -dp 3000:3000 getting-started
+  415  curl localhost
+  416  curl localhost:3000
+  417  podman ps
+  418  podman stop 94968041001b
+  419  podman stop 61a76db505ff
+  420  podman stop cb5d96c9f709
+  421  podman ps
+  422  podman ps -a
+  423  podman rm $(podman ps-qa)
+  424  podman rm $(podman ps -qa)
+  425   
+  426   podman run --help
+  427  podman run sh --help
+  428  podman node --help
+  429  podman node --help |less
+  430  podman run --help |less
+  431  podman run node --help |less
+  432  git clone git@github.com:mpeloso3rd/os2.git
+  433  ssh-keygen
+  434  git clone git@github.com:mikepeloso/os2.git
+  435  cd os2
+  436  man wget
+  437  ls
+  438  cd
+  439  ls
+  440  podman ps
+  441  podman stop 8f
+  442  podman rm 8f
+  443  podman ps
+  444  podman ps -a
+  445  podman images
+  446  cd Kubernetes-Workshop/
+  447  ls
+  448  cd Chapter02
+  449  ls
+  450  cd Exercise02.03
+  451  ls
+  452  ls -l
+  453  vi k8s-for-beginners-pod1.yaml 
+  454  ls -l
+  455  mkdir ~/bin
+  456  mv ~/oc ~/bin
+  457  ls
+  458  cd
+  459  ls
+  460  oc --help
+  461  oc whoami
+  462  oc login
+  463  oc login --token=sha256~HrPhR05IEiFc05S1gVM_D4IRO321jUmqflh7RDAeaBM --server=https://api.training.qeaq.p1.openshiftapps.com:6443
+  464  oc whoami
+  465  history
+  466  cd Kubernetes-Workshop/
+  467  cd Chapter02
+  468  ls
+  469  cd Exercise02.02
+  470  ls
+  471  cd ..
+  472  cd Exercise02.03
+  473  ls
+  474  vi servicetest.yml 
+  475  ls
+  476  vi k8s-for-beginners-pod1.yaml 
+  477  podman images
+  478  vi k8s-for-beginners-pod1.yaml 
+  479  oc apply -f k8s-for-beginners-pod1.yaml 
+  480  oc get pod --show-labels
+  481  oc apply -f k8s-for-beginners-svc.yaml 
+  482  oc get service
+  483  curl http://172.30.64.63:30349
+  484  podman ps
+  485  oc status
+  486  oc get pod
+  487  oc get pod --show-labels
+  488  oc --help | less
+  489  ls
+  490  podman images
+  491  oc get pod --show-labels
+  492  vi k8s-for-beginners-pod1.yaml 
+  493  vi k8s-for-beginners-svc.yaml 
+  494  oc apply -f k8s-for-beginners-svc.yaml 
+  495  oc get service
+  496  curl 172.30.64.63:80
+  497  oc service k8s-for-beginners
+  498  oc service --help
+  499  oc cluster-info
+  500  oc cluster-info dump
+  501  oc get pod -wide
+  502  oc get pod --wide
+  503  oc get pod -o wide
+  504  curl http://10.128.9.207
+  505  curl http://10.128.9.207:80
+  506  oc apply -f k8s-for-beginners-pod1.yaml 
+  507  podman run -it docker.io/nicolaka/netshoot
+  508  ls
+  509  cd
+  510  ls
+  511  cd Kubernetes-Workshop/
+  512  ls
+  513  cd Chapter02
+  514  ls
+  515  cd Exercise02.02
+  516  ls
+  517  vi main.yml 
+  518  oc apply -f main.yml 
+  519  oc get pod -o wide
+  520  curl http://10.128.6.56
+  521  oc get pod -o wide
+  522  ls
+  523  oc apply netshoot.yml 
+  524  oc apply -f netshoot.yml 
+  525  oc rsh netshoot
+  526  oc get pod -o wide
+  527  oc rsh netshoot
+  528  oc get service
+  529  vi main.yml 
+  530  vi netshoot.yml 
+  531  clear
+  532  cd
+  533  oc get pod -o wide
+  534  oc whoami
+  535  cat .gitconfig 
+  536  cd Kubernetes-Workshop/
+  537  cd Chapter02
+  538  cd Exercise02.03
+  539  cd ..
+  540  cd Exercise02.02
+  541  ls
+  542  vi main.yml 
+  543  vi netshoot.yml 
+  544  vim netshoot.yml 
+  545  dnf install -y vim
+  546  sudo dnf install -y vim
+  547  vim netshoot.yml 
+  548  echo "set nocompatible" >> ~/.exrc
+  549  vim netshoot.yml 
+  550  echo "set nocompatible" >> ~/.exrc
+  551  vim netshoot.yml 
+  552  cd
+  553  echo "set nocompatible" >> ~/.exrc
+  554  echo "set nocompatible" >> ~/.vimrc
+  555  vim rh
+  556  cd Kubernetes-Workshop/
+  557  cd Chapter02
+  558  cd Exercise02.02
+  559  vi netshoot.yml 
+  560  ls
+  561  clear
+  562  oc get all
+  563  oc delete pod/netshoot
+  564  oc delete pod/myfirstpod
+  565  oc delete service/k8s-for-beginners
+  566  oc delete service/servicepodtest
+  567  oc get all
+  568  clear
+  569  ls
+  570  cd ..
+  571  cd Exercise02.03
+  572  ls
+  573  vim servicetest.yml 
+  574  ls
+  575  vi k8s-for-beginners-pod1.yaml 
+  576  ls
+  577  vim k8s-for-beginners-svc.yaml 
+  578  oc apply -f k8s-for-beginners-svc.yaml 
+  579  oc apply -f k8s-for-beginners-pod1.yaml 
+  580  oc get all
+  581  oc delete pod/k8s-for-beginners
+  582  oc delete service/k8s-for-beginners
+  583  vi servicetest.yml 
+  584  oc apply servicetest.yml 
+  585  oc apply -f servicetest.yml 
+  586  cd ..
+  587  cd Exercise02.02
+  588  oc apply -f main.yml 
+  589  oc get all
+  590  curl http://172.30.136.173:8080
+  591  curl http://172.30.136.173:80
+  592  oc get all -o wide
+  593  curl http://10.128.9.228
+  594  oc project
+  595  oc apply -f netshoot.yml 
+  596  oc get all
+  597  oc get service -o wide
+  598  oc get pod --show-labels
+  599  oc get pod -o wide
+  600  oc rsh netshoot bash
+  601  oc get all
+  602  oc login --token=sha256~S2LcDMq8viSks6qMzVC8NlwedcHJuF-10d3Ze423u64 --server=https://api.training.qeaq.p1.openshiftapps.com:6443
+  603  oc get all
+  604  oc delete pod/myfirstpod
+  605  oc delete pod/netshoot
+  606  oc delete service/servicepodtest
+  607  ld -l
+  608  ls -l
+  609  cd Kubernetes-Workshop/Chapter02/Exercise02.02
+  610  ls -l
+  611  cp main.yml ~/os2
+  612  cp netshoot.yml ~/os2
+  613  cd ~/ Kubernetes-Workshop/Chapter02/Exercise02.03
+  614  cd ~/Kubernetes-Workshop/Chapter02/Exercise02.03
+  615  ls
+  616  cp servicetest.yml ~/os2
+  617  cd
+  618  cd os2
+  619  ls
+  620  vim main.yml 
+  621  ls
+  622  touch cluster.yml
+  623  cat main.yml >> cluster.yml
+  624  vim cluster.yml
+  625  oc apply -f cluster.yml 
+  626  vim cluster.yml
+  627  oc apply -f cluster.yml 
+  628  oc get all
+  629  oc delete pod/myfirstdeployment-559b4d7667-8nkw6
+  630  oc get all
+  631  oc get all -o wide
+  632  ls
+  633  oc apply -f servicetest.yml 
+  634  oc apply -f netshoot.yml 
+  635  history
+  636  oc get all
+  637  oc rsh netshoot bash
+  638  oc apply -f netshoot.yml 
+  639  oc get all
+  640  oc get all -o wide
+  641  vim netshoot.yml 
+  642  oc get all
+  643  oc delete pod/myfirstdeployment-559b4d7667-rlcpp
+  644  oc get all
+  645  podman images
+  646  podman ps
+  647  podman ps -a
+  648  podman rm -f ff634
+  649  podman ps -a
+  650  oc get all
+  651  podman apply -f netshoot.yml 
+  652  oc apply -f netshoot.yml 
+  653  oc get all
+  654  oc delete pod/netshoot
+  655  oc apply -f netshoot.yml 
+  656  oc get all
+  657  oc delete pod/netshoot
+  658  podman ps
+  659  podman ps -a
+  660  podman images
+  661  podman pull --help
+  662  podman images
+  663  podman pull docker.io/nicolaka/netshoot:latest
+  664  oc create netshoot.yml 
+  665  oc create -f netshoot.yml 
+  666  podman get all
+  667  oc get all
+  668  vim netshoot.yml 
+  669  oc get all
+  670  oc delete pod/netshoot
+  671  oc apple -f netshoot.yml 
+  672  oc apply -f netshoot.yml 
+  673  oc get all
+  674  vim netshoot.yml 
+  675  podman images
+  676  vim netshoot.yml 
+  677  cd ~/Kubernetes-Workshop/Chapter02/Exercise02.02
+  678  ls
+  679  vim netshoot.yml 
+  680  oc apply -f netshoot.yml 
+  681  oc get all
+  682  podman image --help
+  683  podman images
+  684  podman image rm docker.io/nicolaka/netshoot
+  685  podman pull docker.io/nicolaka/netshoot
+  686  podman apply -f netshoot.yml 
+  687  oc apply -f netshoot.yml 
+  688  oc get all
+  689  oc describe
+  690  oc describe pod/netshoot
+  691  oc get all
+  692  oc delete pod/netshoot
+  693  oc apply -f netshoot.yml 
+  694  oc get all
+  695  oc describe pod/netshoot
+  696  oc get all
+  697  oc delete pod/netshoot
+  698  oc apply -f netshoot.yml 
+  699  oc get all
+  700  oc describe pod/netshoot
+  701  oc delete pod/netshoot
+  702  podman search netshoot
+  703  podman pull docker.io/training/netshoot
+  704  cd
+  705  cd os2
+  706  vim netshoot.yml 
+  707  oc apply -f netshoot.yml 
+  708  oc get all
+  709  podman search netshoot
+  710  oc get all
+  711  ls
+  712  podman pull docker.io/nisburgh/pageview
+  713  vim netshoot.yml 
+  714  oc get all
+  715  oc delete pod/netshoot
+  716  oc apply -f netshoot.yml 
+  717  oc get all
+  718  vim netshoot.yml 
+  719  cd os2
+  720  vim netshoot.yml 
+  721  podman images
+  722  cd os2
+  723  vim netshoot.yml 
+  724  oc get all
+  725  oc delete deployment.apps/myfirstdeployment
+  726  oc get all
+  727  ls
+  728  vi cluster.yml 
+  729  oc apply -f cluster.yml 
+  730  oc get all
+  731  oc rsh netshoot bash
+  732  oc rsh netshoot
+  733  oc delete pod/netshoot
+  734  vim netshoot
+  735  vim netshoot.yml 
+  736  oc apply -f netshoot.yml 
+  737  oc get all
+  738  vim netshoot.yml 
+  739  oc apply -f netshoot.yml 
+  740  oc get all
+  741  oc delete pod/netshoot
+  742  oc apply -f netshoot.yml 
+  743  oc get all
+  744  oc delete deployment.apps/myfirstdeployment
+  745  vim cluster.yml 
+  746  oc apply -f cluster.yml 
+  747  oc get all
+  748  oc delete pod/netshoot
+  749  oc apply -f netshoot.yml 
+  750  oc get all
+  751  oc delete all
+  752  oc delete pod/netshoot
+  753  oc get all
+  754  vim cluster.yml 
+  755  vim main.yml 
+  756  vim netshoot.yml 
+  757  vim cluster.yml 
+  758  oc get all
+  759  oc apply -f netshoot.yml 
+  760  oc describe pod/netshoot
+  761  oc delete pod/netshoot
+  762  vim cluster.yml 
+  763  oc apply -f cluster.yml 
+  764  oc get all
+  765  oc apply -f netshoot.yml 
+  766  oc get all
+  767  oc delete deployment.apps/myfirstdeployment
+  768  oc get all
+  769  oc delete pod/netshoot
+  770  oc apply -f netshoot.yml 
+  771  oc get all
+  772  oc delete pod/netshoot
+  773  oc delete service/servicepodtest
+  774  oc get all
+  775  podman ps -a
+  776  oc apply -f cluster.yml 
+  777  oc apply -f servicetest.yml 
+  778  oc apply -f netshoot.yml 
+  779  oc get all
+  780  oc describe pod/netshoot
+  781  oc get all
+  782  man docker
+  783  podman status
+  784  podman info
+  785  oc get all
+  786  oc delete pod/netshoot
+  787  vim cluster.yml 
+  788  oc apply -f cluster.yml 
+  789  oc get all
+  790  oc apply -f netshoot.yml 
+  791  vim netshoot.yml 
+  792  oc apply -f netshoot.yml 
+  793  oc --help | less
+  794  oc get all
+  795  oc delete pod/netshoot
+  796  oc apply -f netshoot.yml 
+  797  cd os2
+  798  oc apply -f netshoot.yml 
+  799  oc get pod --show-labels
+  800  oc describe pod/netshoot
+  801  oc get pod
+  802  oc get all
+  803  podman search dokku
+  804  podman logout
+  805  podman login --help
+  806  docker login -u mpeloso3rd
+  807  podman login -u docker.io/mpeloso3rd
+  808  oc apply -f netshoot.yml 
+  809  oc get all
+  810  oc delete pod/netshoot
+  811  oc apply -f netshoot.yml 
+  812  oc get all
+  813  podman search netshoot
+  814  podman search dokku
+  815  podman search quay.io/dokku
+  816  podman pull quay.io/baseboxorg/dokku-alt
+  817  podman images
+  818  vim netshoot.yml 
+  819  oc delete pod/netshoot
+  820  oc apply -f netshoot.yml 
+  821  oc get pod
+  822  podman search quay.io/netshoot
+  823  podman pull quay.io/aoc/netshoot 
+  824  podman images
+  825  vim netshoot.yml 
+  826  oc delete pod/netshoot
+  827  oc apply -f netshoot.yml 
+  828  oc get all -o wide
+  829  oc rsh netshoot bash
+  830  oc get pod --show-labels
+  831  oc get all -o wide
+  832  curl 10.128.8.171
+  833  oc rsh netshoot bash
+  834  oc scale deploy myfirstdeployment --replicas=5
+  835  oc get pod
+  836  oc scale deploy --help
+  837  oc scale deploy myfirstdeployment --replicas=3
+  838  oc get pod
+  839  oc rsh netshoot
+  840  oc get all
+  841  oc config view |less
+  842  oc whoami
+  843  oc create deployment kubeserve --image=nginx:1.7.8
+  844  oc get pod
+  845  vim sample-deployment.yml
+  846  cd os2
+  847  ls
+  848  cd
+  849  cd Kubernetes-Workshop/
+  850  cd Chapter03
+  851  ls
+  852  cd Exercise03.02/
+  853  ls
+  854  vim sample-deployment.yaml 
+  855  oc apply -f sample-deployment.yaml 
+  856  oc get pod
+  857  oc get deployments
+  858  podman images
+  859  vim sample-deployment.yaml 
+  860  oc apply -f sample-deployment.yaml 
+  861  oc get pod
+  862  oc get deployments
+  863  oc delete deployment/kubeserve
+  864  oc apply -f sample-deployment.yaml 
+  865  oc get pod
+  866  oc describe pod/kubeserve-74d5b95647-sjnhj
+  867  oc get all
+  868  oc describe deployment.apps/kubeserve
+  869  oc get all
+  870  oc describe pod/kubeserve-74d5b95647-zdx2j
+  871  oc get all
+  872  oc delete deployment.apps/kubeserve
+  873  oc get all
+  874  podman ps
+  875  podman ps -a
+  876  podman images
+  877  podman search quay.io/nginx
+  878  podman pull quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+  879  podman pull quay.io/redhattraining/hello-world-nginx
+  880  vim sample-deployment.yaml 
+  881  oc apply -f sample-deployment.yaml 
+  882  oc get all
+  883  oc set image deployment/kubeserve nginx=nginx:1.9.1 –-record
+  884  oc describe deploy kubeserve
+  885  oc rollout history deployment kubeserve
+  886  oc get deployments
+  887  oc rollout history deployment myfirstdeployement
+  888  oc rollout history deployment myfirstdeployment
+  889  oc --help |less
+  890  podman images
+  891  podman image --help
+  892  podman image history quay.io/redhattraining/hello-world-nginx 
+  893  podman image inspect quay.io/redhattraining/hello-world-nginx 
+  894  oc describe kube
+  895  oc get all
+  896  oc describe deployment.apps/kubeserve
+  897  oc set image deployment/kubeserve nginx=quay.io/redhattraining/hello-world-nginx:8.0-120 --record
+  898  oc get all
+  899  oc describe deployment.apps/kubeserve
+  900  oc rollout undo deployments kubeserve
+  901  oc rollout history deployment kubeserve
+  902  oc delete deployment kubeserve
+  903  oc get all
+  904  cd
+  905  cd os2
+  906  oc --help >> oc_help.txt
+  907  ls
+  908  cat oc_help.txt 
+  909  git status
+  910  git add oc_help.txt 
+  911  git add cluster.yml 
+  912  git add main.yml 
+  913  git add netshoot.yml 
+  914  git add servicetest.yml 
+  915  git commit -m "Class 2 Day 2"
+  916  git push
+  917  w
+  918  oc get all
+  919  oc whoami
+  920  podman search busybox
+  921  cd Kubernetes-Workshop/Chapter07/Exercise07.07
+  922  ls
+  923  vim one-time-job.yaml 
+  924  podman search busybox
+  925  vim one-time-job.yaml 
+  926  oc login --token=sha256~URPc_wPl0HJA3oj2hamhv9axqJhWWNqbI7LgyDOq2Ak --server=https://api.training.qeaq.p1.openshiftapps.com:6443
+  927  oc apply -f one-time-job.yaml 
+  928  oc get pod
+  929  oc describe pod/one-time-job-6b84w
+  930  oc logs one-time-job-6b84w
+  931  oc delete job one-time-job-6b84w
+  932  oc delete job/one-time-job-6b84w
+  933  oc get all
+  934  cd ..
+  935  ls
+  936  cd Activity07.01/
+  937  ls
+  938  vim activity-deployment.yaml 
+  939  cd ..
+  940  ls -la
+  941  cd
+  942  git clone https://github.com/nisburgh/os2
+  943  ls
+  944  mv ~/os2 ~/os1
+  945  ls
+  946  git clone https://github.com/nisburgh/os2
+  947  cd os2
+  948  ls
+  949  cd lab03
+  950  ls
+  951  vim pageview-deploy.yml 
+  952  oc get all
+  953  oc delete deployment.apps/myfirstdeployment
+  954  oc get all
+  955  vim pageview-deploy.yml 
+  956  cd
+  957  ls
+  958  cd os1
+  959  cd os2
+  960  ls
+  961  vim netshoot.yml 
+  962  vim servicetest.yml 
+  963  oc apply -f servicetest.yml 
+  964  cd ~/os2/lab03
+  965  ls
+  966  oc apply -f pageview-deploy.yml 
+  967  oc get all
+  968  oc rsh netshoot bash
+  969  oc delete pod/pageview-0
+  970  oc get all
+  971  oc scale --help
+  972  oc scale statefulset.apps/pageview --replicas=5
+  973  oc get all
+  974  oc delete statefulset.apps/pageview
+  975  oc get all
+  976  ls -l
+  977  cp pageview-deploy.yml ~/os1/os2/
+  978  vim pageview-deploy.yml 
+  979  oc apply -f pageview-deploy.yml 
+  980  oc get all -o wide
+  981  vim pageview-deploy.yml 
+  982  oc apply -f pageview-deploy.yml 
+  983  vim pageview-deploy.yml 
+  984  oc get all -o wide
+  985  oc get pod -o wide
+  986  oc scale daemonset.apps/pageview --replicas=5
+  987  oc describe daemonset.apps/pageview | less
+  988  oc get pod
+  989  vim pageview-deploy.yml 
+  990  w
+  991  oc get all -o wide
+  992  oc rsh netshoot bash
+  993  oc describe daemonset.apps/pageview | less
+  994  w
+  995  oc get pod
+  996  oc delete daemonset.apps/pageview
+  997  oc get all
+  998  oc delete pod/one-time-job-6b84w
+  999  oc get all
+ 1000  cd os1/os2
+ 1001  history >> history2.txt
