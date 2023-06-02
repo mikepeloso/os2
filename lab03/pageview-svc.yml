@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: servicepodtest
+  name: pageview
 spec:
   selector:
-    environment: production
-  type: ClusterIP 
+    app: pageview
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 8080

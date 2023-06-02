@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pageview
+spec:
+  containers:
+    - name: pageview
+      image: docker.io/nisburgh/pageview:v2.0
+    - name: netshoot
+      image: docker.io/training/netshoot 
+      tty: true

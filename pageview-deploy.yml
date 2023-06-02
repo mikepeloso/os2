@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pageview
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      environment: production
+  template:
+    metadata:
+      labels:
+        environment: production
+    spec:
+      containers:
+      - name: pageview
+        image: docker.io/nisburgh/pageview:v1.0
